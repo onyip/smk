@@ -20,7 +20,6 @@
  						<div class="box-tools pull-right">
  							<form action="<?=base_url('student/index')?>" method="post">
  								<div class="input-group pull-right col-xs-3">
-
  									<input type="text" name="keyword" placeholder="Search student here..." class="form-control input-sm" autocomplete="off" name="keyword" value="<?= set_value('keyword')?>">
 
  									<span class="input-group-btn">
@@ -37,69 +36,66 @@
  					<div class="box-body">
 
  						<!-- add button -->
- 						<div class="btn-group pull-left">
+ 						<div class="btn-group col-md-6 " >
  							<a href="<?=base_url('student/add')?>">
  								<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add Student</button>
  							</a>
- 				
+
  							<a href="<?=base_url('student/export')?>" target="_blank">
  								<button type="button" class="btn btn-success btn-sm"><i class="fa fa-table"></i> Excel</button>
  							</a>
  						</div>
 
  						<!-- search -->
- 						<form action="<?=base_url('student/index')?>" method="post">
- 							<div class="input-group pull-right col-xs-3">
- 								
+ 						<div class="">
+ 							<form action="<?=base_url('student/index')?>" method="post">
+ 								<div class="input-group col-md-6" >
 
- 								<select class="form-control select2" style="width: 40%;" name="class">
- 									<option value="">Class</option>
- 									<?php foreach ($class as $cls): ?>
- 										<option 
- 										<?php if ($this->session->userdata('by_class') == $cls->id): ?>
- 											selected
- 										<?php endif ?>
- 										value="<?=$cls->id?>"><?=$cls->name?></option>
- 									<?php endforeach ?>
- 								</select>
- 								
 
- 								
- 								<select class="form-control select2" style="width: 40%;" name="period">
- 									<option value="">Period</option>
- 									<?php foreach ($year as $period): ?>
- 										<option 
- 										<?php if ($this->session->userdata('by_period') == $period->id): ?>
- 											selected
- 										<?php endif ?>
- 										value="<?=$period->id?>"><?=$period->year?></option>
- 									<?php endforeach ?>
- 								</select>
- 								<div class="btn-group">
- 									
- 									<button type="submit" class="btn btn-md"><i class="fa fa-search"></i></button>
+ 									<select class="form-control select2 cls" style="width: 49%;" name="class">
+ 										<option value="1">Class</option>
+ 										<?php foreach ($class as $cls): ?>
+ 											<option 
+ 											<?php if ($this->session->userdata('by_class') == $cls->id): ?>
+ 												selected
+ 											<?php endif ?>
+ 											value="<?=$cls->id?>" ><?=$cls->name?></option>
+ 										<?php endforeach ?>
+ 									</select>
+
+
+
+ 									<select class="form-control select2 per" style="width: 49%;" name="period">
+ 										<option value="1">Period</option>
+ 										<?php foreach ($year as $period): ?>
+ 											<option 
+ 											<?php if ($this->session->userdata('by_period') == $period->id): ?>
+ 												selected
+ 											<?php endif ?>
+ 											value="<?=$period->id?>"><?=$period->year?></option>
+ 										<?php endforeach ?>
+ 									</select>
+
  								</div>
- 								
- 							</div>
- 						</form>
- 						<br><br><br>
-
- 						<table class="table table-bordered table-condensed table-striped ">
- 							<thead>
- 								<tr>
- 									<th class="text-center" width="10">No</th>
- 									<th class="text-center" width="68">Action</th>
- 									<th class="text-center" width="130">NIS</th>
- 									<th class="text-center" >Full Name</th>
- 									<th class="text-center" width="150">Class</th>
- 									<th class="text-center" width="150">Period</th>
- 									<th class="text-center" width="50">Ijazah</th>
+ 							</form>
+ 						</div>
+ 						<div class="table-responsive no-padding"><br>
+ 							<table class="table table-bordered table-condensed table-striped table-hover" style="padding: 50px;">
+ 								<thead>
+ 									<tr>
+ 										<th class="text-center" width="10">No</th>
+ 										<th class="text-center" width="68">Action</th>
+ 										<th class="text-center" width="130">NIS</th>
+ 										<th class="text-center" >Full Name</th>
+ 										<th class="text-center" width="150">Class</th>
+ 										<th class="text-center" width="150">Period</th>
+ 										<th class="text-center" width="50">Ijazah</th>
 
 
- 								</tr>
- 							</thead>
- 							<tbody>
- 								<?php $no = 1; foreach($student as $baris): ?>
+ 									</tr>
+ 								</thead>
+ 								<tbody>
+ 									<?php $no = 1; foreach($student as $baris): ?>
  									<tr>
  										<td class="text-center"><?=$no++?></td>
  										<td class="text-center">
@@ -118,11 +114,11 @@
  										<td class="text-center"><?=$baris->y?></td>
  										<td class="text-center">
  											<?php if ($baris->ijasah != null): ?>
- 											<a href="<?=base_url("assets/ijazah/$baris->ijasah")?>" target="_blank">
- 												<button class="btn btn-info btn-xs">
- 													<i class="fa fa-eye"></i>
- 												</button>
- 											</a>
+ 												<a href="<?=base_url("assets/ijazah/$baris->ijasah")?>" target="_blank">
+ 													<button class="btn btn-info btn-xs">
+ 														<i class="fa fa-eye"></i>
+ 													</button>
+ 												</a>
  											<?php endif ?>
  										</td>
  									</tr>
@@ -135,7 +131,8 @@
  							<?php endif ?>
  						</table>
  					</div>
- 					<div class="box-footer clearfix">
+ 				</div>
+ 				<div class="box-footer clearfix">
  						<!-- <?=$this->pagination->create_links()?>
  						<small class="label label-success">Avaliabe : <?=$total?> Data</small> -->
  					</div>
@@ -146,3 +143,19 @@
  	<!-- /.content -->
  </div>
  <!-- /.content-wrapper-->
+
+ <script type="text/javascript">
+ 	$(document).ready(function() {
+
+ 		$('.cls').change(function(){ 
+ 			var e = $(this).val();
+ 			var s =window.location = '<?=base_url("student/cls/?cls=")?>' + e;
+ 		});
+ 		$('.per').change(function(){ 
+ 			var e = $(this).val();
+ 			var s =window.location = '<?=base_url("student/per/?per=")?>' + e;
+ 		});
+
+ 		
+ 	});    
+ </script>

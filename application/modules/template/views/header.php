@@ -32,7 +32,7 @@
   href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <!-- jQuery 3 -->
-  <script src="<?=base_url()?>bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="<?=base_url()?>bower_components/jquery/dist/jquery-3.4.1.min.js"></script>
   <!-- Bootstrap 3.3.7 -->
   <script src="<?=base_url()?>bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <!-- Select2 -->

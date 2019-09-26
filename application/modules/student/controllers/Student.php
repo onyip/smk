@@ -28,13 +28,6 @@
   public function index()
   {
 
-    if ($this->input->post('class') != null) {
-      $data = [
-        'by_class' => $this->input->post('class'),
-        'by_period' => $this->input->post('period')
-      ];
-      $this->session->set_userdata($data);
-    }
 
     if ($this->input->post('submit')) {
       $data ['keyword'] = $this->input->post('keyword');
@@ -44,7 +37,6 @@
     }
 
     $where   = [
-
       'class'  => $this->session->userdata('by_class'),
       'period' =>$this->session->userdata('by_period')
     ];
@@ -59,6 +51,30 @@
     $this->render('index', $data);
   }
 	//end fun
+
+  public function cls()
+  {
+    if ($this->input->get('cls') == "") {
+      $data = $this->session->userdata('by_class');
+      $this->session->set_userdata('by_class', $data);
+    }else{
+      $data = $this->input->get('cls');
+      $this->session->set_userdata('by_class', $data);
+    }
+    $this->index();
+  }
+
+  public function per()
+  {
+    if ($this->input->get('per') == "") {
+      $data = $this->session->userdata('by_period');
+      $this->session->set_userdata('by_period', $data);
+    }else{
+      $data = $this->input->get('per');
+      $this->session->set_userdata('by_period', $data);
+    }
+    $this->index();
+  }
 
   public function reset()
   {
