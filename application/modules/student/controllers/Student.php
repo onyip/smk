@@ -322,7 +322,9 @@ function do_upload() {
         //
       $result = $file_nm;
       $lspdf = $this->input->post('last-pdf');
+      if ($lspdf != "") {
       unlink("./assets/ijazah/$lspdf");
+      }
     }else{
       $result = $this->input->post('last-pdf');
     }
