@@ -231,11 +231,11 @@ class User extends MY_Controller {
 			$objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->name);
 			$rowCount++;
 		}
-		$filename = "User List". date("Y-m-d-H-i-s").".csv";
-		header('Content-Type: application/vnd.ms-excel'); 
+		$filename = "User List". date("Y-m-d-H-i-s").".xlsx";
+		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'); 
 		header('Content-Disposition: attachment;filename="'.$filename.'"');
 		header('Cache-Control: max-age=0'); 
-		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');  
+		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');  
 		$objWriter->save('php://output'); 
 	}
  	//
@@ -285,7 +285,7 @@ class User extends MY_Controller {
 				}
 				unlink($fullpath);
 				$result = $this->m_user->insert($userdata);
-				if($result = run){
+				if(!$result){
 
 					$this->session->set_flashdata('success', 'Import');
 					redirect('user');
@@ -306,6 +306,6 @@ class User extends MY_Controller {
  	//
 	public function get_form()
 	{
-		force_download('./assets/user/form_user.csv',NULL);
+		force_download('./assets/user/form_user.xlsx',NULL);
 	}
 }

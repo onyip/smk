@@ -47,8 +47,8 @@ class Searceh extends MY_Controller {
 			die();
 		}
 		$data = $this->m_searceh->searceh($keyword);
-		$output .= '<div class="table-responsive">
-		<table class="table table-bordered table-striped table-condensed table-hover" style="padding: 50px;">
+		$output .= '<div class="table-responsive table-responsive-lg">
+		<table class="table table-bordered table-striped table-condensed">
 		<thead>
 		<tr>
 		<th class="text-center" width="10">No</th>

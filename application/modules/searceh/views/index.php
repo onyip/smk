@@ -84,9 +84,9 @@
                <div class="col-md-offset-3 col-md-6 col-sm-12" >
                     <form action="" method="get" class="online-form">
                          <input type="text" name="" class="form-control search" placeholder="Masukan NIS atau Nama Siswa" style="border-color:#dbdbe1;">
-                    </form><br>
+                    </form><br><br><br>
                </div>
-               <div id="isi">
+               <div id="isi" class=" col-md-12 col-sm-12">
 
                </div>
 

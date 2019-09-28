@@ -53,7 +53,7 @@
 
 
  									<select class="form-control select2 cls" style="width: 49%;" name="class">
- 										<option value="1">Class</option>
+ 										<option value="">Class</option>
  										<?php foreach ($class as $cls): ?>
  											<option 
  											<?php if ($this->session->userdata('by_class') == $cls->id): ?>
@@ -66,7 +66,7 @@
 
 
  									<select class="form-control select2 per" style="width: 49%;" name="period">
- 										<option value="1">Period</option>
+ 										<option value="">Period</option>
  										<?php foreach ($year as $period): ?>
  											<option 
  											<?php if ($this->session->userdata('by_period') == $period->id): ?>

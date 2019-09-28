@@ -70,6 +70,7 @@
                 <small class="text-info">* Please select file on PDF format max size 1 MB</small>
                 <input type="file" name="ijasah">
                 <input type="hidden" name="last-pdf" value="<?=$student->ijasah?>">
+                <?=$student->ijasah?>
               </div><br>
 
               <div class="pull-right">
