@@ -72,4 +72,9 @@ class  M_student extends CI_Model{
 		
 	}
 
+	public function validasi($were)
+	{
+		return $this->db->get_where('student', $were);
+	}
+
 }

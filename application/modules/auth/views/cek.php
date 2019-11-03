@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SMK N 1 Bukateja | Registration </title>
+  <title>SMK N 1 Bukatja | Registration</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -30,41 +30,38 @@
 <body class="hold-transition register-page">
   <div class="register-box">
     <div class="register-logo">
-      <a href="<?=base_url()?>"><b>Registration</b></a>
+      <a href="#"><b>Registration</b></a>
     </div>
 
     <div class="register-box-body">
       <p class="login-box-msg">Register a new membership</p>
+      <?=$this->session->flashdata('pesan') ?>
 
-      <form action="<?=base_url('auth/action')?>" method="post">
-        <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Username" name="user" value="<?php if ($main != NULL){echo $main->nis;}else{echo set_value('user');}?>">
-          <span class="fa fa-user form-control-feedback"></span>
-          <small class="text-danger"><?= form_error('user'); ?></small>
-        </div>
-        <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Full name" name="name" value="<?php if ($main != NULL){echo $main->name;}else{echo set_value('user');}?>">
+      <form action="<?=base_url('auth/validasi')?>" method="post">
+        <div class="has-feedback">
+          <input type="text" class="form-control" placeholder="Enter NIS" name="nis" value="<?= set_value('name')?>">
           <span class="form-control-feedback"></span>
-          <small class="text-danger"><?= form_error('name'); ?></small>
+          <small class="text-danger"><?= form_error('name') ?></small>
         </div>
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Password" name="password">
-          <span class="fa fa-lock form-control-feedback"></span>
-          <small class="text-danger"><?= form_error('password'); ?></small>
+        <div class="form-group row">
+          <label class="btn btn-block">Enter your birthday</label>
+          <div class="col-xs-3">
+            <input type="text" class="form-control" placeholder="Day" name="d">
+          </div> 
+          <div class="col-xs-3">
+            <input type="text" class="form-control" placeholder="Month" name="m">
+          </div>
+          <div class="col-xs-6">
+            <input type="text" class="form-control" placeholder="Year" name="y">
+          </div>
         </div>
-
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Repassword" name="repassword">
-          <span class="form-control-feedback"></span>
-        </div>
-
         <div class="row">
           <div class="col-xs-8">
 
           </div>
           <!-- /.col -->
           <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
           </div>
           <!-- /.col -->
         </div>

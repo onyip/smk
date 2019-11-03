@@ -50,6 +50,7 @@ class Auth extends MY_Controller {
 					} else{
 
 						$data = [
+							'id' => $cek['id'],
 							'name' => $cek['name'],
 							'username' => $cek['username'],
 							'created' => $cek['created'],
@@ -76,6 +77,40 @@ class Auth extends MY_Controller {
 
 
 	public function register()
+	{
+		$this->load->view('cek');
+	}
+
+	public function validasi()
+	{
+		$data = $this->input->post(NULL, TRUE);
+		$were = [
+			'nis' => $data['nis'],
+			'tgl_lahir' => $data['d'].'/'.$data['m'].'/'.$data['y']
+		];
+		$validasi = $this->m_student->validasi($were);
+
+		if ($validasi->num_rows() >= 1) {
+			$cek = $this->m_user->validasi(['username' => $data['nis']]);
+			if ($cek->num_rows() >= 1) {
+				$this->session->set_flashdata('pesan', '<div class=" text-center alert alert-danger" role="alert" id="pesan">
+					Your account already exists !</div>');
+				$this->load->view('cek');
+			} else {
+				$main['main'] = $validasi->row();
+				$this->load->view('register', $main);
+			}
+			
+		} else {
+			$this->session->set_flashdata('pesan', '<div class=" text-center alert alert-danger" role="alert" id="pesan">
+				Your NIS not found or does not match your birthday !</div>');
+
+			$this->load->view('cek');
+		}
+		
+	}
+
+	public function action()
 	{ 
 		if($this->session->userdata('is_active') == "1"){
 			if ($this->session->userdata('level') == "1") {
@@ -99,6 +134,7 @@ class Auth extends MY_Controller {
 			$this->load->helper('string');
 			$userdata = [
 				'id' => random_string('basic'),
+				'is_active' => 1,
 				'name' => $this->input->post('name'),
 				'username' => $this->input->post('user'),
 				'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
@@ -107,8 +143,8 @@ class Auth extends MY_Controller {
 
 			$this->m_auth->register($userdata);
 			$this->session->set_flashdata('pesan', '<div class=" text-center alert alert-success" role="alert" id="pesan">
-				Selamat anda berhasil mendaftar. tunggu atau hubungi admin untuk mengaktifkan akun anda'.' '.$this->session->userdata('nama_admin').'!</div>');
-			redirect ('');
+				Selamat anda berhasil mendaftar. Silahkan Login !</div>');
+			redirect ('auth');
 		}
 	}
 

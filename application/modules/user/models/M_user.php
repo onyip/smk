@@ -62,4 +62,9 @@ class  M_user extends CI_Model{
 		
 	}
 
+	public function validasi($were)
+	{
+		return $this->db->get_where('user', $were);
+	}
+
 }
