@@ -52,7 +52,6 @@ class Searceh extends MY_Controller {
 		<thead>
 		<tr>
 		<th class="text-center" width="10">No</th>
-		<th class="text-center" width="130">NIS</th>
 		<th class="text-center" >Full Name</th>
 		<th class="text-center" width="150">Class</th>
 		<th class="text-center" width="150">Period</th>
@@ -69,13 +68,17 @@ class Searceh extends MY_Controller {
 				$output .= '
 				<tr>
 				<td class="text-center">'.$no++.'</td>
-				<td class="text-center">'.$row->nis.'</td>
 				<td>'.$row->name.'</td>
 				<td class="text-center">'.$row->c.'</td>
 				<td class="text-center">'.$row->y.'</td>
 				<td class="text-center">';
-				if ($row->ijasah != "") {
-				$output .=	'<a href="'.base_url("assets/ijazah/").$row->ijasah.'" target="_blank">
+				if ($row->ijasah != "" && $this->session->userdata('id') == $row->nis) {
+					$output .=	'<a href="'.base_url("assets/ijazah/").$row->ijasah.'" target="_blank">
+					<i class="fa fa fa-download btn btn-sm text-info"></i>
+					</a>';	
+				}
+				if ($row->ijasah != "" && $this->session->userdata('id_group') != 3 && $this->session->userdata('status') == 'logined') {
+					$output .=	'<a href="'.base_url("assets/ijazah/").$row->ijasah.'" target="_blank">
 					<i class="fa fa fa-download btn btn-sm text-info"></i>
 					</a>';	
 				}

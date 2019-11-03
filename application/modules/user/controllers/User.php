@@ -131,6 +131,7 @@ class User extends MY_Controller {
 		if ($this->session->userdata('id_group') == 3 && $this->session->userdata('id') != $id) {
 			$this->err();
 		}
+
 		$data['title'] = "User";
 		$data['sub'] = "Update User";
 		$data['user'] = $this->m_user->id($id);
@@ -293,17 +294,19 @@ class User extends MY_Controller {
 				$i=0;
 				
 				foreach ($allDataInSheet as $key => $value) {
-					$userdata = [
-						'id' => random_string('basic'),
-						'name' => $value['A'],
-						'username' => $value['B'],
-						'password' => password_hash($value['C'], PASSWORD_DEFAULT),
-						'created' => date("Y-m-d H:i:s"),
-						'id_group' => 3,
-						'is_active' => 1
-					];	
+					if ($i > 0) {
+						$userdata = [
+							'id' => random_string('basic'),
+							'name' => $value['A'],
+							'username' => $value['B'],
+							'password' => password_hash($value['C'], PASSWORD_DEFAULT),
+							'created' => date("Y-m-d H:i:s"),
+							'id_group' => 3,
+							'is_active' => 1
+						];	
+						$result = $this->m_user->insert($userdata);
+					}
 					$i++;
-					$result = $this->m_user->insert($userdata);
 				}
 				unlink($fullpath);
 				if(!$result){

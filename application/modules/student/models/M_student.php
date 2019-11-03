@@ -57,12 +57,12 @@ class  M_student extends CI_Model{
 
 	public function id($id)
 	{
-		$data = $this->db->where('id', $id)->get('student');
+		$data = $this->db->get_where('student', $id);
 		if ($data == null) {
 			return null;
 		} 
 
-		return $data->row();
+		return $data;
 
 	}
 
