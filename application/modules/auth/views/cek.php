@@ -47,12 +47,15 @@
           <label class="btn btn-block">Enter your birthday</label>
           <div class="col-xs-3">
             <input type="text" class="form-control" placeholder="Day" name="d">
+            <small class="text-info">ext : 01</small>
           </div> 
           <div class="col-xs-3">
             <input type="text" class="form-control" placeholder="Month" name="m">
+            <small class="text-info">ext : 01</small>
           </div>
           <div class="col-xs-6">
             <input type="text" class="form-control" placeholder="Year" name="y">
+            <small class="text-info">ext : 2000</small>
           </div>
         </div>
         <div class="row">

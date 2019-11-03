@@ -19,7 +19,7 @@
       <!-- box body -->
       <form action="<?=base_url('user/edit')?>" method="post">
         <div class="box-body">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <input type="hidden" name="id" value="<?=$user->id?>">
 
             <div class="form-group">
@@ -27,56 +27,56 @@
               <input type="text" class="form-control" name="name" value="<?=$user->name?>">
             </div>
 
-            <div class="form-group">
+            <div class="form-group" >
               <label>Username</label>
-              <input type="text" class="form-control" name="username" value="<?=$user->username?>">
+              <input type="text" class="form-control" name="username" value="<?=$user->username?>"<?php if ($this->session->userdata('id_group') == 3){echo "readonly";}?>>
             </div>
-
-            <div class="form-group">
-              <label>Group</label><br>
-              <select class="form-control" name="id_group">
-                <option value="">--select--</option>
-                <?php foreach ($group as $option): ?>
-                  <option value="<?=$option->id?>"
-                    <?php if ($user->id_group == $option->id){echo "selected";}?>>
-                    <?=$option->name?></option>
-                  <?php endforeach ?>
-                </select>
-              </div>
-
+            <?php if ($this->session->userdata('id_group') != 3): ?>
               <div class="form-group">
-                <?php if ($user->is_active == 1): ?>
-                  <input type="checkbox" name="is_active" value="<?=$user->is_active?>" checked> Enable
-                  <?php else: ?>
-                    <input type="checkbox" name="is_active" value="1"> Enable 
-                  <?php endif ?>
+                <label>Group</label><br>
+                <select class="form-control" name="id_group">
+                  <option value="">--select--</option>
+                  <?php foreach ($group as $option): ?>
+                    <option value="<?=$option->id?>"
+                      <?php if ($user->id_group == $option->id){echo "selected";}?>>
+                      <?=$option->name?></option>
+                    <?php endforeach ?>
+                  </select>
                 </div>
+
+                <div class="form-group">
+                  <?php if ($user->is_active == 1): ?>
+                    <input type="checkbox" name="is_active" value="<?=$user->is_active?>" checked> Enable
+                    <?php else: ?>
+                      <input type="checkbox" name="is_active" value="1"> Enable 
+                    <?php endif ?>
+                  </div>
+                <?php endif ?>
               </div>
             </div>
             <!-- /.box-body -->
-
             <div class="box-footer">
-              <div class="margin pull-right">
-                
+              <div class="pull-right">
                 <div class="btn-group">
                   <button type="button" class="btn btn-warning btn-sm pull-right" data-toggle="modal" data-target="#add"><i class="fa fa-pencil-square-o"></i> Change Password</button>
                 </div>
-                
                 <div class="btn-group">
                   <button type="submit" class="btn btn-primary btn-sm pull-right"><i class="fa fa-floppy-o"></i> Save</button>
                 </div>
-                
-                <div class="btn-group ">
-                  <a href="<?=base_url('user')?>"><button type="button" class="btn btn-danger btn-sm pull-right"><i class="fa fa-times"></i> Cancel</button></a>
-                </div>
+
+                <?php if ($this->session->userdata('id_group') != 3): ?>
+                  <div class="btn-group ">
+                    <a href="<?=base_url('user')?>"><button type="button" class="btn btn-danger btn-sm pull-right"><i class="fa fa-times"></i> Cancel</button></a>
+                  </div>
+                <?php endif ?>
 
               </div>
             </div>
           </form>
         </div>
       </section>
-      <!-- /.content -->
     </div>
+    <!-- /.content -->
     <!-- /.content-wrapper -->
 
     <!-- Modal -->
@@ -111,5 +111,5 @@
         </div>
       </div>
     </div>
-    
-    
+
+

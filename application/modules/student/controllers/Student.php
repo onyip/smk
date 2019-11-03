@@ -273,9 +273,9 @@ public function inport()
           'created_by' => $this->session->userdata('name')
         ];
         $i++;
+        $result = $this->m_student->insert($userdata);
       }
       unlink($fullpath);
-      $result = $this->m_student->insert($userdata);
       if(!$result){
 
         $this->session->set_flashdata('success', 'Import');
@@ -323,7 +323,7 @@ function do_upload() {
       $result = $file_nm;
       $lspdf = $this->input->post('last-pdf');
       if ($lspdf != "") {
-      unlink("./assets/ijazah/$lspdf");
+        unlink("./assets/ijazah/$lspdf");
       }
     }else{
       $result = $this->input->post('last-pdf');

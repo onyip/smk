@@ -26,6 +26,11 @@ class User extends MY_Controller {
 
 	public function index()
 	{
+
+		if ($this->access->_read == 0) {
+			$this->err();
+		}
+
 		if ($this->input->post('submit')) {
 			$data ['keyword'] = $this->input->post('keyword');
 			$this->session->set_userdata('keyword', $data['keyword']);
@@ -107,7 +112,7 @@ class User extends MY_Controller {
 	{
 		if ($this->access->_delet == 0) {
 			$this->session->set_flashdata('cus', 'You do not have access to delete this data !');
-			redirect('classs');
+			redirect('user');
 		}
  		//
 		$data = ['id' => $id];
@@ -119,6 +124,13 @@ class User extends MY_Controller {
 	
 	public function update($id = false)
 	{
+		if ($this->access->_update == 0) {
+			$this->session->set_flashdata('cus', 'You do not have access to Update this data !');
+			redirect('user');
+		}
+		if ($this->session->userdata('id_group') == 3 && $this->session->userdata('id') != $id) {
+			$this->err();
+		}
 		$data['title'] = "User";
 		$data['sub'] = "Update User";
 		$data['user'] = $this->m_user->id($id);
@@ -134,10 +146,14 @@ class User extends MY_Controller {
 	{
 		if ($this->access->_update == 0) {
 			$this->session->set_flashdata('cus', 'You do not have access to update this data !');
-			redirect('classs');
+			redirect('user');
 		}
+
  		//
 		$id = $this->input->post('id');
+		if ($this->session->userdata('id_group') == 3 && $this->session->userdata('id') != $id) {
+			$this->err();
+		}
 		$data = [
 			'name' =>  $this->input->post('name'),
 			'username' =>  $this->input->post('username'),
@@ -147,7 +163,12 @@ class User extends MY_Controller {
 
 		$this->m_user->edit($id, $data);
 		$this->session->set_flashdata('success', 'Update');
-		redirect('user');
+		if ($this->session->userdata('id_group') == 3) {
+			redirect("user/update/$id");
+		} else {
+			redirect('user');
+		}
+		
 	}
 	//end fun
 
@@ -282,9 +303,9 @@ class User extends MY_Controller {
 						'is_active' => 1
 					];	
 					$i++;
+					$result = $this->m_user->insert($userdata);
 				}
 				unlink($fullpath);
-				$result = $this->m_user->insert($userdata);
 				if(!$result){
 
 					$this->session->set_flashdata('success', 'Import');

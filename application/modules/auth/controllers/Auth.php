@@ -13,6 +13,13 @@ class Auth extends MY_Controller {
 	public function index()
 	{
 		//cek user sudal login atau belum
+		if($this->session->userdata('is_active') == "1"){
+			if ($this->session->userdata('id_group') == "3") {
+				$id =$this->session->userdata('id');
+				redirect("user/update/$id");
+			}
+			redirect('user');
+		}
 
 		if ($this->session->userdata('status') == 'logined') {
 			redirect('dashboard');
@@ -61,7 +68,12 @@ class Auth extends MY_Controller {
 
 						$this->session->set_userdata($data);
 						$this->session->set_flashdata('success', 'Login');
-						redirect ('dashboard');
+						if ($this->session->userdata('id_group') == "3") {
+							$id =$this->session->userdata('id');
+							redirect(base_url());
+						}else{
+							redirect ('dashboard');
+						}
 					}
 				}
 
@@ -113,7 +125,7 @@ class Auth extends MY_Controller {
 	public function action()
 	{ 
 		if($this->session->userdata('is_active') == "1"){
-			if ($this->session->userdata('level') == "1") {
+			if ($this->session->userdata('id_group') == "1") {
 				redirect('dasbor');
 			}
 			redirect('user');

@@ -1,7 +1,7 @@
 <header class="main-header">
 
   <!-- Logo -->
-  <a href="#" class="logo">
+  <a href="<?=base_url()?>" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b><?=$about->abbreviation?></b></span>
     <!-- logo for regular state and mobile devices -->
@@ -11,7 +11,7 @@
   <!-- Header Navbar -->
   <nav class="navbar navbar-static-top" role="navigation">
     <!-- Sidebar toggle button-->
-    <a href="<?=base_url()?>#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+    <a href="<?=base_url()?>" class="sidebar-toggle" data-toggle="push-menu" role="button">
       <span class="sr-only">Toggle navigation</span>
     </a>
     <!-- Navbar Right Menu -->

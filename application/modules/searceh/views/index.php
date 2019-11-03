@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-	<title><?=$about->abbreviation?> | <?=$about->application?></title>
+      <link rel="icon" type="image/png" href="<?=base_url('assets/img/logo/')?><?=$about->logo?>">
+     <title><?=$about->abbreviation?> | <?=$about->application?></title>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
      <meta name="description" content="">
@@ -19,12 +19,14 @@
      <link rel="stylesheet" href="<?=base_url('a_public/')?>css/tooplate-style.css">
      <style type="text/css">
           footer {
-           position: fixed;
-           bottom: 0;
-           height: 0px;
-           width: 100%;
-      }
- </style>
+              position: fixed;
+              bottom: 0;
+              height: 0px;
+              width: 100%;
+              padding-bottom: 30px;
+              padding-top: 10px;
+         }
+    </style>
 
 </head>
 <body>
@@ -96,7 +98,7 @@
      <!-- FOOTER -->
      <footer id="footer  ">
 
-          <div class="col-md-12 col-sm-12 " style="padding-top: 25px">
+          <div class="col-md-12 col-sm-12 ">
                <div >
                     <p>Copyright &copy; <?= date("Y") ?> <?=$about->copyright?> - Created_by: Alif N R</p>
                </div>
