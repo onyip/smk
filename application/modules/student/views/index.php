@@ -44,6 +44,9 @@
  							<a href="<?=base_url('student/export')?>" target="_blank">
  								<button type="button" class="btn btn-success btn-sm"><i class="fa fa-table"></i> Excel</button>
  							</a>
+ 							<a href="<?=base_url('student/delet_by_class')?>" class="del-btn">
+ 								<button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Clear Data Class</button>
+ 							</a>
  						</div>
 
  						<!-- search -->

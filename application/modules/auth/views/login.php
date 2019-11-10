@@ -30,7 +30,7 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href="<?=base_url()?>"><b>Integral Store</b></a>
+      <a href="<?=base_url()?>"><b>SMK N 1 Bukateja</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

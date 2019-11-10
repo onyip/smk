@@ -58,6 +58,8 @@
   <script src="<?=base_url()?>bower_components/fastclick/lib/fastclick.js"></script>
   <!-- AdminLTE App -->
   <script src="<?=base_url()?>dist/js/adminlte.min.js"></script>
+  <!-- CK Editor -->
+  <script src="<?=base_url()?>bower_components/ckeditor/ckeditor.js"></script>
   <script>
 
     $(function () {

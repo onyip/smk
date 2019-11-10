@@ -16,6 +16,7 @@ class MY_Controller extends MX_Controller {
 		$this->load->model('student/m_student');	
 		$this->load->model('classs/m_class');	
 		$this->load->model('year/m_year');	
+		$this->load->model('announcement/m_announcement');	
 	}
 
 	public function render($content, $data = null)
