@@ -34,5 +34,10 @@ class  M_announcement extends CI_Model{
 		$this->db->update('announcement', $data, $were);
 		
 	}
+	public function get_tot()
+	{
+		return $this->db->get_where('announcement', ['is_active' => 1])->num_rows();
+	}
+
 
 }

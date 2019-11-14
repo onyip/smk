@@ -25,6 +25,8 @@ class Searceh extends MY_Controller {
 	public function index()
 	{
 		$data['about'] = $this->m_about->about();
+		$data['ann'] = $this->m_announcement->get_all();
+		$data['ann_tot'] = $this->m_announcement->get_tot();
 
 		$this->load->view('index',$data);
 	}

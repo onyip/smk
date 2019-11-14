@@ -30,7 +30,7 @@
 <body class="hold-transition register-page">
   <div class="register-box">
     <div class="register-logo">
-      <a href="<?=base_url()?>"><b>Registration</b></a>
+      <a href="<?=base_url()?>"><b>SMK N 1 Bukateja</b></a>
     </div>
 
     <div class="register-box-body">
