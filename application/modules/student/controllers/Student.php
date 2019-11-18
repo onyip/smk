@@ -138,20 +138,20 @@ class Student extends MY_Controller {
     if ($target->ijasah != NULL) {
       unlink("./assets/ijazah/$target->ijasah");
     }
-    $this->m_student->delet($data);
+    $this->m_student->delet($id);
     $this->session->set_flashdata('success', 'Delete');
     redirect('student');
   }
 	//end fun
 
-  public function update($id = false)
+  public function update($id = null)
   {
+    $were = ['id' => $id];
     $data['title']   = "Student";
     $data['sub']     = "Update Student";
-    $data['student'] = $this->m_student->id($id);
+    $data['student'] = $this->m_student->id($were)->row();
     $data['class']   = $this->m_class->get_class();
     $data['year']    = $this->m_year->get_period();
-    // var_dump($data); die();
 
     if ($data['student'] == null) {
       redirect('student');

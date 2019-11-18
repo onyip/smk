@@ -95,7 +95,7 @@
 							<div class="row">
 								<div class="form-group col-md-6">
 									<label>Class</label>
-									<select class="form-control select2" name="class">
+									<select class="form-control select2" name="class" required>
 										<option value="">Select Class</option>
 										<?php foreach ($class as $cls): ?>
 											<option value="<?=$cls->id?>"><?=$cls->name?></option>
@@ -105,7 +105,7 @@
 
 								<div class="form-group col-md-6">
 									<label>Periode</label>
-									<select class="form-control select2" name="period">
+									<select class="form-control select2" name="period" required>
 										<option value="">Select Period</option>
 										<?php foreach ($year as $period): ?>
 											<option value="<?=$period->id?>"><?=$period->year?></option>

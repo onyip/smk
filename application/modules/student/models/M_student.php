@@ -50,19 +50,14 @@ class  M_student extends CI_Model{
 		$this->db->insert('student',$userdata);
 	}
 
-	public function delet($data)
+	public function delet($id)
 	{
-		$this->db->where($data)->delete('student');
+		$this->db->where($id)->delete('student');
 	}
 
 	public function id($id)
 	{
-		
-		return $this->db
-		->where('id', $id)
-		->get('student')
-		->row();
-
+		return $this->db->get_where('student', $id);
 	}
 
 	public function edit($id, $data)
