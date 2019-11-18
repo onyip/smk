@@ -151,6 +151,7 @@ class Student extends MY_Controller {
     $data['student'] = $this->m_student->id($id);
     $data['class']   = $this->m_class->get_class();
     $data['year']    = $this->m_year->get_period();
+    // var_dump($data); die();
 
     if ($data['student'] == null) {
       redirect('student');
