@@ -74,7 +74,7 @@ class Searceh extends MY_Controller {
 				<td class="text-center">'.$row->c.'</td>
 				<td class="text-center">'.$row->y.'</td>
 				<td class="text-center">';
-				if ($row->ijasah != "" && $this->session->userdata('id') == $row->nis) {
+				if ($row->ijasah != "" && $this->session->userdata('username') == $row->nis) {
 					$output .=	'<a href="'.base_url("assets/ijazah/").$row->ijasah.'" target="_blank">
 					<i class="fa fa fa-download btn btn-sm text-info"></i>
 					</a>';	
